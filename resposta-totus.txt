@@ -1,0 +1,86 @@
+1 questão
+
+sugestão de nomes:
+
+arquivos:
+bootcamp.ts -> minegrid.ts
+
+
+class Bootcamp -> class MineGrid
+
+variável internalCamp -> grid
+
+classe Bootcamp
+constructor(x: number=1, y: number=1) -> constructor(gridWidth: number=1, gridHeight: number=1)
+
+get camp() -> get grid()
+
+nas demais funções da classe Bootcamp, alterar os nomes dos parâmetros:
+
+x -> positionX
+y -> posistionY
+
+essas alterações fazem com que as variáveis tenham um significado compatível com o contexto da aplicação (posição, grid, mine)
+
+
+3 - questao
+Sim é possível. Basta criar uma classe de serviço BootcampService e nela criar um método getBootCamp que retorna uma instancia de Bootcamp dentro do serviço para ser utilizada em outros componentes
+
+
+4  - questao
+
+Como você organizaria o backend para o serviço citado anteriormente?","Qual seria estrutura de pastas, linguagem escolhida, frameworks e bibliotecas utilizadas
+
+Estrutura das pastas :
+
+src
+   |- app
+         |-BootcampService
+		              - bootcampservice.ts
+					  - bootcampservice.spec.ts
+         |-Bootcamp
+                  - bootcamp.ts
+
+				  
+Angular, typescript, nodejs, javascript
+
+
+5 - questao
+
+
+export class GetRequestComponent {
+
+   constructor(private httpGet: Http) { }
+   
+   responseData;
+   
+   ngOnInit() {
+   
+      this.httpGet.get("http://myServer.com/users?isActive=true").
+      map(
+         (response) ⇒ response.json()
+      ).
+      subscribe(
+         (data) ⇒ {this.displaydata(data);}
+      )
+   }
+   
+   displaydata(data) {this.responseData = data;}
+}
+
+
+export class User{    
+    public id: string;
+    public name: string;
+    public age: string;
+    public isActive: string;
+}
+createUser(user: User): Observable<User> {
+     return this.http.post<User>(this.url, user);
+}
+
+
+6 questao
+
+Eliminar as funções que cuidam de setar as bombas, deixar a classe somente para criação e inicialização do grid. As criação e posicionamento das bombas ficaria em outra classe
+
